@@ -1,3 +1,7 @@
 cmake_minimum_required(VERSION 3.11)
-include_directories ("/usr/include/octave-4.4.1" "/usr/include/octave-4.4.1/octave")
+project(octave_FFI)
+find_library(OCTAVE_LIBRARY NAMES octave)
+find_path(OCTAVE_INCLUDE_DIR NAMES oct.h)
+include_directories(${OCTAVE_INCLUDE_DIR}/..)
 add_library (matmult matmult.cc)
+target_link_libraries(matmult PUBLIC ${OCTAVE_LIBRARY})
