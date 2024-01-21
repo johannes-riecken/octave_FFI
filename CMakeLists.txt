@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(octave_FFI)
-find_library(OCTAVE_LIBRARY NAMES octave)
+find_package(PkgConfig)
+pkg_check_modules(OCTAVE REQUIRED octave)
 message("foo ${OCTAVE_LIBRARY}")
 find_path(OCTAVE_INCLUDE_DIR NAMES octave/oct.h HINTS /usr/include/*)
 message("bar ${OCTAVE_INCLUDE_DIR}")
